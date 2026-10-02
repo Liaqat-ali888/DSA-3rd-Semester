@@ -35,7 +35,7 @@ class Node {
 		}
 	}
 
-void rangOfLow(Node head){
+void rang(Node head){
 		int max = head.data;
 		int min = head.data;
 		Node cur = head;
@@ -55,19 +55,19 @@ void rangOfLow(Node head){
 
 }
 
-class listLow{
+class listA{
 	
 	Node head;
 	Node tail;
 	Node next;
-	listLow(){
+	listA(){
 		head = null;
 		next= null;
 	}
-	void insertLow(){
+	void insertA(){
 		Node cur = list.head;
 		while(cur!=null){
-			if(cur.data<30){
+			if(cur.data%3==0){
 				Node newNode = new Node(cur.data);
 				if(head==null){
 				head=newNode;
@@ -89,19 +89,19 @@ class listLow{
 	
 }
 
-class listMid{
+class listB{
 	
 	Node head;
 	Node tail;
 	Node next;
-	listMid(){
+	listB(){
 		head = null;
 		next= null;
 	}
-	void insertMid(){
+	void insertB(){
 		Node cur = list.head;
 		while(cur!=null){
-			if(cur.data>=30 && cur.data <=70){
+			if((cur.data)%5 == 0 && (cur.data)%3 != 0){
 				Node newNode = new Node(cur.data);
 				if(head==null){
 				head=newNode;
@@ -119,6 +119,40 @@ class listMid{
 	}
 
 	}
+
+	class listC{
+	
+	Node head;
+	Node tail;
+	Node next;
+	listC(){
+		head = null;
+		next= null;
+	}
+	void insertC(){
+		Node cur = list.head;
+		while(cur!=null){
+			if((cur.data)%3 !=0  && (cur.data)%5 !=0){
+				Node newNode = new Node(cur.data);
+				if(head==null){
+				head=newNode;
+				tail =newNode;
+				
+              }
+              else{
+              tail.next = newNode;
+              tail = newNode;
+			}
+		}
+			cur = cur.next;
+		}
+
+	}
+
+	
+
+	
+}
 
 
 
@@ -141,19 +175,26 @@ class main{
        l.display(l.head);
        System.out.print("\n\n\n");
 	
-		listLow low = new listLow();
-		low.insertLow();
-		System.out.print("Low list: ");
-		l.display(low.head);
-		System.out.print("\nrang of low: ");
-		l.rangOfLow(low.head);
+		listA a = new listA();
+		a.insertA();
+		System.out.print("List: divisible by 3:\t");
+		l.display(a.head);
+		System.out.print("\nrang of A: ");
+		l.rang(a.head);
 
-       listMid mid = new listMid();
-		mid.insertMid();
-		System.out.print("Mid list: ");
-		l.display(mid.head);
-		System.out.print("\nrang of mid: ");
-		l.rangOfLow(mid.head);
+       listB b = new listB();
+		b.insertB();
+		System.out.print("List: divisible by 5 (but not by 3):\t");
+		l.display(b.head);
+		System.out.print("\nrang of B: ");
+		l.rang(b.head);
+
+		  listC c = new listC();
+		c.insertC();
+		System.out.print("List C(others):\t ");
+		l.display(c.head);
+		System.out.print("\nrang of C: ");
+		l.rang(c.head);
 
 	}
 }
